@@ -1,74 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {
+  Routes,
+  Switch,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
+import Home from "./Pages/Home";
+import CardsList from "./Pages/CardsList";
+import RandomCards from "./Pages/RandomCards";
 import SearchBar from "./SearchBar";
-import cardsInfo from "./CardsInfo";
-import Modal from "./components/Modal";
 import Footer from "./Footer";
+import NavBar from "./NavBar";
+import Links from "./Links";
 
 function App() {
   const [cardName, setCardName] = useState("");
-  const [modalCard, setModalCard] = useState(null);
+  const location = useLocation();
+  const [currentRoute, setCurrentRoute] = useState(location.pathname);
 
-  const filteredCards = cardsInfo.filter((card) => card.name === cardName);
-
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = (card) => {
-    setModal(!modal);
-    setModalCard({
-      name: card.name,
-      img: card.img,
-      yes: card.yes,
-      default: card.default,
-      revers: card.revers,
-      relations: card.relations,
-      career: card.career,
-      health: card.health,
-    });
-  };
-
-  if (modal) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
+  useEffect(() => {
+    setCurrentRoute(location.pathname);
+  }, [location]);
 
   return (
-    <div className="App">
-      <nav>
-        <SearchBar cardName={cardName} setCardName={setCardName} />
-      </nav>
+    
+      <div className="App">
+        <NavBar>
+          {currentRoute === '/cardsList' ? <SearchBar setCardName={setCardName}/> : <div></div>}
+          <Links />
+        </NavBar>
 
-      <main className="">
-        <ul className="card-container">
-          {cardName === "" // Check if cardName is empty
-            ? cardsInfo.map((card) => (
-                <li
-                  key={card.id}
-                  className="card"
-                  onClick={() => toggleModal(card)}
-                >
-                  <img src={card.img} alt={card.name} />
-                </li>
-              ))
-            : filteredCards.map((card) => (
-                <li
-                  key={card.id}
-                  className="card"
-                  onClick={() => toggleModal(card)}
-                >
-                  <img src={card.img} alt={card.name} />
-                </li>
-              ))}
-        </ul>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/cardsList"
+            element={<CardsList cardName={cardName} />}
+          />
+          <Route path="/randomCards" element={<RandomCards />} />
+        </Routes>
 
-        {modal && <Modal toggleModal={toggleModal} card={modalCard} />}
-      </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
 
-      <footer>
-        <Footer />
-      </footer>
-    </div>
   );
 }
 
