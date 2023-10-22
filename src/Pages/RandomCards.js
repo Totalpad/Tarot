@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "../styles/RandomCards.css";
 import cardsInfo from "../CardsInfo";
-import Modal from "../components/Modal";
+import Modal from "../components/Modal/Modal";
 import ImageComponent from "../components/ImageComponent";
-import Button from "../components/Button";
+import Button from "../components/Button/Button";
 
 function RandomCards() {
   const [randomCards, setRandomCards] = useState([]);
@@ -30,20 +30,26 @@ function RandomCards() {
   } else {
     document.body.classList.remove("active-modal");
   }
+  function generateRandomCards() {
+    const randomCardIndices = Array.from({ length: 3 }, () =>
+      Math.floor(Math.random() * 79)
+    );
+
+    const randomCardsList = randomCardIndices
+      .map((index) => cardsInfo[index])
+      .filter((card) => card);
+
+    return randomCardsList;
+  }
 
   function handleNew() {
     setRandomCards([]);
   }
+
   function handleStart() {
     if (randomCards.length > 0) return;
 
-    const rundomNums = Array.from({ length: 3 }, () =>
-      Math.floor(Math.random() * 79)
-    );
-
-    const randomCardsList = rundomNums.map((num) =>
-      cardsInfo.find((card) => card.id === num)
-    );
+    const randomCardsList = generateRandomCards();
     setRandomCards(randomCardsList);
   }
 
@@ -56,26 +62,26 @@ function RandomCards() {
       ) : (
         <Button onHandleClick={handleStart}>Гадaти</Button>
       )}
-      
-        {randomCards.length > 0 && (
-          <div className="showCards  ">
-            <h2>👇 Ось ваші карти 👇</h2>
-            <ul className="card-container section__padding ">
-              {randomCards
-                .filter((card) => card) // Filter out any undefined cards
-                .map((card) => (
-                  <li
-                    key={card.id}
-                    className="card"
-                    onClick={() => toggleModal(card)}
-                  >
-                    <ImageComponent src={card.img} alt={card.name} />
-                  </li>
-                ))}
-            </ul>
-          </div>
-        )}
-      
+
+      {randomCards.length > 0 && (
+        <div className="showCards  ">
+          <h2>👇 Ось ваші карти 👇</h2>
+          <ul className="card-container section__padding ">
+            {randomCards
+              .filter((card) => card) // Filter out any undefined cards
+              .map((card) => (
+                <li
+                  key={card.id}
+                  className="card"
+                  onClick={() => toggleModal(card)}
+                >
+                  <ImageComponent src={card.img} alt={card.name} />
+                </li>
+              ))}
+          </ul>
+        </div>
+      )}
+
       {randomCards.length === 0 && (
         <div className="start">
           <p>

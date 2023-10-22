@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-function Links({expandNavbar, currentRoute, setExpandNavbar }) {
+function Links({ expandNavbar, currentRoute, setExpandNavbar }) {
+  function getLinkClassName(targetRoute) {
+    return currentRoute === targetRoute ? "text-red" : "link-text";
+  }
+
   return (
     <div className="right-side">
       <div className="toggleButton">
@@ -11,31 +15,19 @@ function Links({expandNavbar, currentRoute, setExpandNavbar }) {
             setExpandNavbar((prev) => !prev);
           }}
         >
-          {expandNavbar ? <FaTimes /> : <FaBars />} 
+          {expandNavbar ? <FaTimes /> : <FaBars />}
         </button>
-        
       </div>
       <div className="links">
-        <Link
-          className={currentRoute === "/" ? `text-red ` : `link-text`}
-          to="/"
-        >
+        <Link className={getLinkClassName("/")} to="/">
           Головна
         </Link>
-        {/* <div className="Row" /> */}
-        <Link
-          className={currentRoute === "/cardsList" ? `text-red ` : `link-text`}
-          to="/cardsList"
-        >
+
+        <Link className={getLinkClassName("/cardsList")} to="/cardsList">
           Список карт
         </Link>
-        {/* <div className="Row" /> */}
-        <Link
-          className={
-            currentRoute === "/randomCards" ? `text-red ` : `link-text`
-          }
-          to="/randomCards"
-        >
+
+        <Link className={getLinkClassName("/randomCards")} to="/randomCards">
           Гадання
         </Link>
       </div>

@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import cardsInfo from "../CardsInfo";
-import Modal from "../components/Modal";
+import Modal from "../components/Modal/Modal";
 import ImageComponent from "../components/ImageComponent";
 
-
-
-function CardsList({cardName}) {
-
-
+function CardsList({ cardName }) {
   const [modalCard, setModalCard] = useState(null);
 
   const filteredCards = cardsInfo.filter((card) => card.name === cardName);

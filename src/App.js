@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+
+
+// Components
 import Home from "./Pages/Home";
 import CardsList from "./Pages/CardsList";
 import RandomCards from "./Pages/RandomCards";
-
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 
