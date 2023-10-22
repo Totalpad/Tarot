@@ -1,5 +1,5 @@
 .btn {
-  background-color: #6600cc;
+  background-color: var(--mainColor);
   color: azure;
   border: none;
   border-radius: 0.9rem;
@@ -12,5 +12,5 @@
 }
 
 .btn:hover {
-  background-color: #ef5d14;
+  background-color: var(--textImportante);
 }

@@ -15,15 +15,15 @@ function Modal({ toggleModal, card }) {
           <img src={card.img} alt={card.name} />
 
           <div className="bg-card-info">
-          <h2> {card.name} </h2>
+          <h2 > {card.name} </h2>
           <div className="card-info">
             
-            <p><em>Так/Ні:</em> {card.yes}</p>
-            <p><em>Загальне значення:</em> {card.default}</p>
-            <p><em>Перевернута карта:</em> {card.revers}</p>
-            <p><em>Відносини:</em> {card.relations}</p>
-            <p><em>Кар’єра:</em> {card.career}</p>
-            <p><em>Здоров’я:</em> {card.health}</p>
+            <p><strong className="text-red">Так/Ні:</strong> {card.yes}</p>
+            <p><strong className="text-red">Загальне значення:</strong> {card.default}</p>
+            <p><strong className="text-red">Перевернута карта:</strong> {card.revers}</p>
+            <p><strong className="text-red">Відносини:</strong> {card.relations}</p>
+            <p><strong className="text-red">Кар’єра:</strong> {card.career}</p>
+            <p><strong className="text-red">Здоров’я:</strong> {card.health}</p>
 
 
           </div>

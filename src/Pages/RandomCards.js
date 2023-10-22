@@ -48,7 +48,7 @@ function RandomCards() {
   }
 
   return (
-    <div className="randomCards  ">
+    <div className="randomCards">
       <h1>Гадання собі</h1>
 
       {randomCards.length > 0 ? (
@@ -77,7 +77,7 @@ function RandomCards() {
         )}
       
       {randomCards.length === 0 && (
-        <div className="start text">
+        <div className="start">
           <p>
             Перед тим як натиснути кнопку 👆<strong>Гадати</strong>👆, задайте
             собі питання.

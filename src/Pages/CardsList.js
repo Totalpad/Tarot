@@ -3,6 +3,8 @@ import cardsInfo from "../CardsInfo";
 import Modal from "../components/Modal";
 import ImageComponent from "../components/ImageComponent";
 
+
+
 function CardsList({cardName}) {
 
 

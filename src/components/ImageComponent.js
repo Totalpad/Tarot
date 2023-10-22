@@ -14,8 +14,9 @@ export default function ImageComponent({ src, alt }) {
 
   return (
     <>
-    <div style={{display: imageLoaded ? 'none' : 'inline'}}>
-        <Blurhash
+    <div style={{display: imageLoaded ? 'none' : 'inline'}} >
+        <Blurhash 
+        className="blurhash-placeholder"
         hash="TLKKG#M|~V^aofxY^+R*IqNNoJIr"
         width={170}
         height={300}

@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import {BsFillSearchHeartFill } from 'react-icons/bs'
+
 
 function SearchBar({ setCardName }) {
   const [name, setName] = useState("");
@@ -30,9 +32,11 @@ function SearchBar({ setCardName }) {
   }, [setName,setCardName]);
 
   return (
+    <div className="wrapper">
+
+   
     <form onSubmit={handleSubmit}>
       <input
-      
         className="search"
         list="cards"
         value={name}
@@ -41,7 +45,11 @@ function SearchBar({ setCardName }) {
         onChange={(e) => {
           setName(e.target.value);
         }}
-      />
+        />
+          
+        <button type="submit" className="subButton"><BsFillSearchHeartFill /></button>
+     
+      
 
       <datalist id="cards">
         <option value="Дурак" />
@@ -124,6 +132,8 @@ function SearchBar({ setCardName }) {
         <option value="X Жезлів">Жезлів 10</option>
       </datalist>
     </form>
+
+    </div>
   );
 }
 

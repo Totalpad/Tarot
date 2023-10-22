@@ -27,28 +27,11 @@ body.active-modal {
   width: 75%;
   position: absolute;
   display: flex;
+  justify-content: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  /* background-image: linear-gradient(
-  45deg,
-  hsl(240deg 100% 20%) 1%,
-  hsl(289deg 100% 21%) 43%,
-  hsl(315deg 100% 27%) 50%,
-  hsl(329deg 100% 36%) 51%,
-  hsl(337deg 100% 43%) 51%,
-  hsl(357deg 91% 59%) 49%,
-  hsl(17deg 100% 59%) 49%,
-  hsl(34deg 100% 53%) 50%,
-  hsl(45deg 100% 50%) 57%,
-  hsl(55deg 100% 50%) 99%
-); */
-  padding: 15px 20px;
-  /* border-radius: 15px; */
-  border-radius: 60px 18px 100px 60px;
-  -webkit-border-radius: 60px 18px 100px 60px;
-  -moz-border-radius: 60px 18px 100px 60px;
 }
 
 .bg-card-info {
@@ -92,26 +75,31 @@ body.active-modal {
   cursor: pointer;
   height: 25px;
   transition: transform 0.3s;
+  transition: 0.4s;
 }
 
 .close-modal:hover {
-  color: white;
+  color: #ef5d14;
   transform: scale(1.5);
 }
 
 @media (max-width: 480px) {
+  .modal-content img {
+    display: none;
+  }
+  .modal-content {
+    height: 80vh;
+    width: 90%;
+  }
+  .card-info {
+    width: 100%;
+  }
 }
 
 @media (max-width: 767px) {
 }
 
 @media screen and (max-width: 768px) {
-  .modal-content {
-    width: 75%;
-    position: absolute;
-    display: flex;
-  }
-
   .modal-content img {
     height: 500px;
     width: 268px;
